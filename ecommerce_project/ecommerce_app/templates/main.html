@@ -3,12 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>E-Commerce App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
+        body{
+            background-color: grey;
+        }
         hr {
             border-top: 1px solid white;
             margin: 0;
+        }
+        /* add all other css styles here */
+        .product-id {
+            width: 10%;
+        }
+        .thumbnail {
+            width: 10%;
+        }
+        .name {
+            width: 10%;
+        }
+        .tags {
+            width: 10%;
+        }
+        .description {
+            width: 50%;
         }
     </style>
 </head>
@@ -26,50 +45,67 @@
             </nav>
             </div>
             </div>
+            <hr class="hr">
+            <hr class="hr">
         </div>
     </div>
-    <hr class="hr">
-    <div class="container" style="background-color: #379683;">
+    <div class="container" style="background-color: #2b7768;">
+            <form method="GET" action="{% url 'main' %}">
+                <span style="color: #EDF5E1;">Search by description</span>
+                <input type="text" name="search" placeholder="...">
+                <button type="submit">Search</button>
+            </form>
+    </div>
 
-        <table class="table">
+    <input id="description-search" type="text" placeholder="Search by description.." onkeyup=searchDescription()>
+
+    <div class="container" style="background-color: #379683;">
+        <table class="product-table" id="product-table">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">Thumbnail</th>
-                <th scope="col">Name</th>
-                <th scope="col">Tags</th>
-                <th scope="col">Description</th>
-                <!-- Add more columns as needed -->
+                <th class="product-id" scope="col">Product ID</th>
+                <th class="product-thumbnail" scope="col">Thumbnail</th>
+                <th class="product-name" scope="col">Name</th>
+                <th class="product-description" scope="col">Description</th>
+                <th class="product-tags" scope="col">Tags</th>
               </tr>
             </thead>
             <tbody>
               {% for product in products %}
               <tr>
-                <th scope="row">{{ forloop.counter }}</th>
-                <td><img src="{{ product.picture_url }}" alt="{{ product.name }}" width="100"></td>
-                <td>{{ product.name }}</td>
-                <td>
-                {% for tag in product.tags.all %}
-                <ul>{{ tag.name }}</ul>
-                {% endfor %}
+                <td class="product-id">{{ product.id }}</th>
+                <td class="product-thumbnail"><img src="{{ product.picture_url }}"  width="100"></td>
+                <td class="product-name">{{ product.name }}</td>
+                <td class="product-description">{{ product.description }}</td>
+                <td class="product-tags">
+                    {% for tag in product.tags.all %}
+                    <ul>{{ tag.name }}</ul>
+                    {% endfor %}
                 </td>
-                <td>{{ product.description }}</td>
-                <!-- Add more cells as needed -->
               </tr>
               {% endfor %}
             </tbody>
           </table>
-
-        <!-- {% for product in products %}
-        <h2>{{ product.name }}</h2>
-        <p>{{ product.description }}</p>
-        {% empty %}
-        <p>No products found</p>
-        {% endfor %} -->
-    
     </div>
-
-
-    
+    <script>
+        function searchDescription() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById('description-search');
+            filter = input.value;
+            table = document.getElementById('product-table');
+            tr = table.getElementsByTagName('tr');
+            for (i = 1; i < tr.length; i++) {
+                td = tr[i].getElementsByClassName('product-description')[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.includes(filter)) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
 </body>
 </html>
