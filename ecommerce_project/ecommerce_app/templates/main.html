@@ -13,9 +13,19 @@
             border-top: 1px solid white;
             margin: 0;
         }
+        span {
+            color:#EDF5E1
+        }
         /* add all other css styles here */
+        .search-filter-container{
+            background-color: #2b7768; 
+            margin-top: 5px; 
+            margin-bottom: 5px; 
+            padding-top: 5px; 
+            padding-bottom: 5px;
+        }
         .product-id {
-            width: 10%;
+            width: 5%;
         }
         .thumbnail {
             width: 10%;
@@ -23,11 +33,14 @@
         .name {
             width: 10%;
         }
-        .tags {
+        .category {
             width: 10%;
         }
+        .tags {
+            width: 20%;
+        }
         .description {
-            width: 50%;
+            width: 45%;
         }
     </style>
 </head>
@@ -40,33 +53,44 @@
             </div>
             <div class="col-sm-4">
             <nav class="nav nav-pills nav-fill">
-                <a class="nav-link" style="background-color: #05386B; color: #EDF5E1;" href="/">Active</a>
+                <a class="nav-link" style="background-color: #05386B; color: #EDF5E1;" href="/">Home</a>
                 <a class="nav-link" style="color: #EDF5E1;" href="/admin">Admin</a>
             </nav>
             </div>
             </div>
             <hr class="hr">
-            <hr class="hr">
         </div>
     </div>
-    <div class="container" style="background-color: #2b7768;">
-            <form method="GET" action="{% url 'main' %}">
-                <span style="color: #EDF5E1;">Search by description</span>
-                <input type="text" name="search" placeholder="...">
-                <button type="submit">Search</button>
-            </form>
+    <div class="container search-filter-container">
+        <span>Search by Description: </span> 
+        <input id="description-search" type="text" onkeyup=searchByDescription()>
+        <br>
+
+        <span>Filter by Category:</span>
+        <div class="form-check">
+            {% for category in categories %}
+                <input class="category-checkboxes" type="checkbox" value="{{ category.name }}" onclick=filterByCategory() checked>
+                <span> {{ category.name }} </span>
+            {% endfor %}
+        </div>
+
+        <span>Filter by Tags:</span>
+        <div class="form-check">
+            {% for tag in tags %}
+                <input class="tag-checkboxes" type="checkbox" value="{{ tag.name }}" onclick=filterByCategory() checked>
+                <span> {{ tag.name }} </span>
+            {% endfor %}
+        </div>
     </div>
-
-    <input id="description-search" type="text" placeholder="Search by description.." onkeyup=searchDescription()>
-
     <div class="container" style="background-color: #379683;">
         <table class="product-table" id="product-table">
             <thead>
               <tr>
-                <th class="product-id" scope="col">Product ID</th>
+                <th class="product-id" scope="col">ID</th>
                 <th class="product-thumbnail" scope="col">Thumbnail</th>
                 <th class="product-name" scope="col">Name</th>
                 <th class="product-description" scope="col">Description</th>
+                <th class="product-category" scope="col">Category</th>
                 <th class="product-tags" scope="col">Tags</th>
               </tr>
             </thead>
@@ -77,6 +101,7 @@
                 <td class="product-thumbnail"><img src="{{ product.picture_url }}"  width="100"></td>
                 <td class="product-name">{{ product.name }}</td>
                 <td class="product-description">{{ product.description }}</td>
+                <td class="product-category">{{ product.category }}</td>
                 <td class="product-tags">
                     {% for tag in product.tags.all %}
                     <ul>{{ tag.name }}</ul>
@@ -88,16 +113,17 @@
           </table>
     </div>
     <script>
-        function searchDescription() {
-            var input, filter, table, tr, td, i, txtValue;
-            input = document.getElementById('description-search');
-            filter = input.value;
-            table = document.getElementById('product-table');
-            tr = table.getElementsByTagName('tr');
+        function searchByDescription() {
+
+            let input = document.getElementById('description-search');
+            let filter = input.value.toLowerCase();
+            let table = document.getElementById('product-table');
+            let tr = table.getElementsByTagName('tr');
             for (i = 1; i < tr.length; i++) {
-                td = tr[i].getElementsByClassName('product-description')[0];
+                let td = tr[i].getElementsByClassName('product-description')[0];
                 if (td) {
-                    txtValue = td.textContent || td.innerText;
+                    let txtValue = td.textContent || td.innerText;
+                    txtValue = txtValue.toLowerCase()
                     if (txtValue.includes(filter)) {
                         tr[i].style.display = "";
                     } else {
@@ -105,6 +131,34 @@
                     }
                 }
             }
+        }
+
+        function filterByCategory(){
+
+            let checkboxes = document.getElementsByClassName('category-checkboxes');
+            let checkedCategories = [];
+
+            for (let i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    checkedCategories.push(checkboxes[i].value);
+                }
+            }
+
+            table = document.getElementById('product-table');
+            tr = table.getElementsByTagName('tr');
+            for (i = 1; i < tr.length; i++) {
+                td = tr[i].getElementsByClassName('product-category')[0];
+                console.log(td.innerText)
+                if(!checkedCategories.includes(td.innerText)){
+                    tr[i].style.display="none"
+                } else {
+                    tr[i].style.display=""
+                }
+            }
+        }
+
+        function filterByTags(){
+
         }
     </script>
 </body>

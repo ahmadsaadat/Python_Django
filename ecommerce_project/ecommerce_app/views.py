@@ -1,10 +1,20 @@
 from django.shortcuts import render
-from .models import Product
-from django.http import HttpResponse
+from .models import Product, Category, Tag
 
 def main(request):
     products = Product.objects.all()
+    categories = Category.objects.all()
+    tags = Tag.objects.all()
 
-    return render(request, 'main.html', {'products':products})
+    for tag in tags:
+        print(tag)
+
+    response = {
+        'products':products, 
+        'categories': categories,
+        'tags': tags
+        }
+
+    return render(request, 'main.html', response)
 
 
