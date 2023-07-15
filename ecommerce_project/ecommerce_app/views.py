@@ -1,13 +1,15 @@
 from django.shortcuts import render
 from .models import Product, Category, Tag
+from django.core.paginator import Paginator
 
 def main(request):
-    products = Product.objects.all()
+    # Set up pagination
+    p = Paginator(Product.objects.all(), 4)
+    page = request.GET.get('page')
+    products = p.get_page(page)
+
     categories = Category.objects.all()
     tags = Tag.objects.all()
-
-    for tag in tags:
-        print(tag)
 
     response = {
         'products':products, 
@@ -16,5 +18,3 @@ def main(request):
         }
 
     return render(request, 'main.html', response)
-
-

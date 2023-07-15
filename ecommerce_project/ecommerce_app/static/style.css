@@ -1,0 +1,48 @@
+body{
+    background-color: grey;
+}
+hr {
+    border-top: 1px solid white;
+    margin: 0;
+}
+span {
+    color:#EDF5E1
+}
+td {
+    padding: 10px 10px;
+    border-bottom: 1px solid #ddd;
+}
+.link-color {
+    color: #EDF5E1;
+}
+/* add all other css styles here */
+.search-filter-container{
+    background-color: #2b7768; 
+    margin-top: 5px; 
+    margin-bottom: 5px; 
+    padding-top: 5px; 
+    padding-bottom: 5px;
+}
+.pagination-container{
+    background-color: #2b7768; 
+    padding-bottom: 2px;
+    margin-bottom: 2px;
+}
+.product-id {
+    width: 5%;
+}
+.thumbnail {
+    width: 10%;
+}
+.name {
+    width: 10%;
+}
+.category {
+    width: 10%;
+}
+.tags {
+    width: 20%;
+}
+.description {
+    width: 45%;
+}

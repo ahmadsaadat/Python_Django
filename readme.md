@@ -20,3 +20,6 @@ https://www.devgap.uk/blog/wp-content/uploads/2018/09/E-Commerce-Sites-With-UX-D
 
 tutorial:
 https://www.youtube.com/watch?v=n-FTlQ7Djqc&list=PL4cUxeGkcC9ib4HsrXEYpQnTOTZE1x0uc
+
+pagination:
+https://www.youtube.com/watch?v=N-PB-HMFmdo
