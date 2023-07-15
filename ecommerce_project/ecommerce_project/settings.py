@@ -124,5 +124,8 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-CSRF_TRUSTED_ORIGINS = ['ahmadsaadat-solid-succotash-64w4wr4wrqj24vv7-8000.preview.app.github.dev']
+CSRF_TRUSTED_ORIGINS = [
+    'http://ahmadsaadat-solid-succotash-64w4wr4wrqj24vv7-8000.preview.app.github.dev',
+    'https://ahmadsaadat-solid-succotash-64w4wr4wrqj24vv7-8000.preview.app.github.dev'
+    ]
 
