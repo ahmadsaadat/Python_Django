@@ -12,6 +12,12 @@ td {
     padding: 10px 10px;
     border-bottom: 1px solid #ddd;
 }
+.logo-name {
+    vertical-align: middle; 
+    font-size: large; 
+    padding-top: 1%; 
+    color: #EDF5E1;
+}
 .link-color {
     color: #EDF5E1;
 }

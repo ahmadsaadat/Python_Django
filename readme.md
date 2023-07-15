@@ -6,7 +6,7 @@ Please populate your database with some random data using Django admin. And desi
 Please let me know if you have any questions about this project.
 
 Deconstruction:
-1. Domain Model: Product, category, tag
+1. Domain Model: Product, Category, Tag
 2. Admin: Populate Database with random data using Django Admin
 3. End User: Design simple HTML page to allow user to search product by description
 4. End User: filter by category and tag
@@ -23,3 +23,20 @@ https://www.youtube.com/watch?v=n-FTlQ7Djqc&list=PL4cUxeGkcC9ib4HsrXEYpQnTOTZE1x
 
 pagination:
 https://www.youtube.com/watch?v=N-PB-HMFmdo
+
+
+Solution 1: Place onus on Client Side
+- return all data rows 
+- write javascript to perform client side search and filtering
+Issues: 
+- Database performance issues
+
+Solution 2: Reducing burden on database
+- Introduce pagination to take load off of database
+Issues: 
+- searching and filtering cannot be done on client side
+
+Solution 3: Finding a balance
+- Make use of django libraries to search and filter
+Issues:
+- Increases server utilization

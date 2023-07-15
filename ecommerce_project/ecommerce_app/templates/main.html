@@ -14,50 +14,56 @@
     <div class="container" style="background-color: #2b7768;">
         <div class="row">
             <div class="col-sm-8">
-                <div style="vertical-align: middle; font-size: large; padding-top: 1%; color: #EDF5E1;">E-Commerce App</div>
+                <div class="logo-name">E-Commerce App</div>
             </div>
             <div class="col-sm-4">
             <nav class="nav nav-pills nav-fill">
-                <a class="nav-link" style="background-color: #05386B; color: #EDF5E1;" href="/">Home</a>
-                <a class="nav-link" style="color: #EDF5E1;" href="/admin">Admin</a>
+                <a href="/" class="nav-link" style="background-color: #05386B; color: #EDF5E1;">Home</a>
+                <a href="/admin" class="nav-link" style="color: #EDF5E1;">Admin</a>
             </nav>
             </div>
             </div>
             <hr class="hr">
         </div>
     </div>
+    
+    <form id="filter-form" method="get" action=".">
+        <div class="container search-filter-container">
+            <span>Search by Description: </span>  
+            <input id="description-search" name="description" type="text" value="{{ request.GET.description|default:'' }}">
+            <br>
 
-    <div class="container search-filter-container">
-        <span>Search by Description: </span> 
-        <input id="description-search" type="text" onkeyup=searchByDescription()>
-        <br>
+            <span>Filter by Category:</span>
+            <div class="form-check">
+                {% for category in categories %}
+                <input type="checkbox" class="category-checkbox" name="category" value="{{ category.name }}" {% if category.name in request.GET.category %} checked {% endif %}>
+                <label for="{{ category.name }}" style="color: #EDF5E1;">{{ category.name }}</label>
+                {% endfor %}
+            </div>
 
-        <span>Filter by Category:</span>
-        <div class="form-check">
-            {% for category in categories %}
-                <input class="category-checkbox" type="checkbox" value="{{ category.name }}" onclick=filterByCategory() checked>
-                <span> {{ category.name }} </span>
-            {% endfor %}
+            <span>Filter by Tags:</span>
+            <div class="form-check">
+                {% for tag in tags %}
+                <input type="checkbox" class="tag-checkbox" name="tag" value="{{ tag.name }}" {% if tag.name in request.GET.tag %} checked {% endif %}>
+                <label for="{{ tag.name }}" style="color: #EDF5E1;">{{ tag.name }}</label>
+                {% endfor %}
+            </div>
+            <button type="submit">Apply filters</button>
         </div>
-
-        <span>Filter by Tags:</span>
-        <div class="form-check">
-            {% for tag in tags %}
-                <input class="tag-checkbox" type="checkbox" value="{{ tag.name }}" onclick=filterByTags() checked>
-                <span> {{ tag.name }} </span>
-            {% endfor %}
-        </div>
-    </div>
+    </form>
+    
     <div class="container pagination-container">
-        {% if products.has_previous %}
-            <a href="?page=1" style="color: #EDF5E1;">&laquo First</a>
-            <a href="?page={{products.previous_page_number}}" style="color: #EDF5E1;">Previous</a>
-        {% endif %}
-        <span > Page {{ products.number }} of {{ products.paginator.num_pages }} </span>
-        {% if products.has_next %}
-            <a href="?page={{products.next_page_number}}" style="color: #EDF5E1;">Next</a>
-            <a href="?page={{products.paginator.num_pages}}" style="color: #EDF5E1;">Last&raquo</a>
-        {% endif %}
+        {% with request.GET as parameters %}
+            {% if products.has_previous %}
+                <a href="?{{ parameters.urlencode }}&page=1" style="color: #EDF5E1;">&laquo First</a>
+                <a href="?{{ parameters.urlencode }}&page={{ products.previous_page_number }}" style="color: #EDF5E1;">Previous</a>
+            {% endif %}
+            <span > Page {{ products.number }} of {{ products.paginator.num_pages }} </span>
+            {% if products.has_next %}
+                <a href="?{{ parameters.urlencode }}&page={{ products.next_page_number }}" style="color: #EDF5E1;">Next</a>
+                <a href="?{{ parameters.urlencode }}&page={{ products.paginator.num_pages }}" style="color: #EDF5E1;">Last&raquo</a>
+            {% endif %}
+        {% endwith %}
     </div>
 
     <div class="container" style="background-color: #379683;">

@@ -1,71 +1,43 @@
-
-
 function searchByDescription() {
-
-    let input = document.getElementById('description-search');
-    let filter = input.value.toLowerCase();
-    let table = document.getElementById('product-table');
-    let tr = table.getElementsByTagName('tr');
-    for (i = 1; i < tr.length; i++) {
-        let td = tr[i].getElementsByClassName('product-description')[0];
+    const input = document.getElementById('description-search');
+    const filter = input.value.toLowerCase();
+    const table = document.getElementById('product-table');
+    const rows = table.getElementsByTagName('tr');
+  
+    for (let i = 1; i < rows.length; i++) {
+        let td = rows[i].getElementsByClassName('product-description')[0];
         if (td) {
             let txtValue = td.textContent || td.innerText;
             txtValue = txtValue.toLowerCase()
-            if (txtValue.includes(filter)) {
-                tr[i].style.display = "";
-            } else {
-                tr[i].style.display = "none";
-            }
+            rows[i].style.display = txtValue.includes(filter) ? "" : "none";
         }
     }
 }
 
-function filterByCategory(){
+function filterByCategory() {
+    const checkboxes = document.getElementsByClassName('category-checkbox');
+    const checkedCategories = Array.from(checkboxes).filter(cb => cb.checked).map(cb => cb.value);
+    const table = document.getElementById('product-table');
+    const rows = table.getElementsByTagName('tr');
 
-    let checkboxes = document.getElementsByClassName('category-checkbox');
-    let checkedCategories = [];
-
-    for (let i = 0; i < checkboxes.length; i++) {
-        if (checkboxes[i].checked) {
-            checkedCategories.push(checkboxes[i].value);
-        }
-    }
-
-    table = document.getElementById('product-table');
-    tr = table.getElementsByTagName('tr');
-    for (i = 1; i < tr.length; i++) {
-        td = tr[i].getElementsByClassName('product-category')[0];
-        if(!checkedCategories.includes(td.innerText)){
-            tr[i].style.display="none"
-        } else {
-            tr[i].style.display=""
-        }
+    for (let i = 1; i < rows.length; i++) {
+        const td = rows[i].getElementsByClassName('product-category')[0];
+        rows[i].style.display = checkedCategories.includes(td.innerText) ? "" : "none";
     }
 }
 
-function filterByTags(){
+function filterByTags() {
+    const checkboxes = document.getElementsByClassName('tag-checkbox');
+    const checkedTags = Array.from(checkboxes).filter(cb => cb.checked).map(cb => cb.value);
+    const table = document.getElementById('product-table');
+    const rows = table.getElementsByTagName('tr');
 
-    let checkboxes = document.getElementsByClassName('tag-checkbox');
-    let checkedCategories = [];
-
-    for (let i = 0; i < checkboxes.length; i++) {
-        if (checkboxes[i].checked) {
-            checkedCategories.push(checkboxes[i].value);
-        }
-    }
-
-    table = document.getElementById('product-table');
-    tr = table.getElementsByTagName('tr');
-    for (i = 1; i < tr.length; i++) {
-        td = tr[i].getElementsByClassName('product-tags')[0];
-        let dataTags = td.innerText.trim().split(',')
+    for (let i = 1; i < rows.length; i++) {
+        const td = rows[i].getElementsByClassName('product-tags')[0];
+        const dataTags = td.innerText.trim().split(',');
 
         for(let dataTag of dataTags){
-            if(!checkedCategories.includes(dataTag.trim())){
-                tr[i].style.display="none"
-            } else {
-                tr[i].style.display=""
-            }
+            rows[i].style.display = checkedTags.includes(dataTag.trim()) ? "" : "none";
         }
     }
 }
