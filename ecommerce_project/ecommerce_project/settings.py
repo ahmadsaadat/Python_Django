@@ -129,3 +129,5 @@ CSRF_TRUSTED_ORIGINS = [
     'https://ahmadsaadat-solid-succotash-64w4wr4wrqj24vv7-8000.preview.app.github.dev'
     ]
 
+ALLOWED_HOSTS = ['54.166.78.71']
+

@@ -1,4 +1,14 @@
-Django project
+# Title: Remarcable Assessment
+### Author: Ahmad Saadat
+
+# Ecomm Project
+
+Ecomm is a web platform that allows users to see all the products that are offered. It provides a search and filtering functionality to aid with browsing. 
+**[please see figure 1]**
+
+For the ecomm administrators, this application provides a portal to manage products. 
+**[please see figure 2]**
+
 
 We would like you to build a simple Django project with the following models: product, category, and tag. You should be able to assign a single category to any given product, and you could assign multiple tags to multiple products. For example, if your product is iPhone 13, you could assign a single category of phone and you could assign tags like smart phone,  128GB, camera, 6.1”. You should also be able to assign the same tags like smart phone to other products like Samsung Galaxy 21.
 
@@ -12,17 +22,6 @@ Deconstruction:
 4. End User: filter by category and tag
 5. Write a query function with Django
 
-
-references:
-
-UI:
-https://www.devgap.uk/blog/wp-content/uploads/2018/09/E-Commerce-Sites-With-UX-Design-Farmdrop-devgap.uk_-1200x706.jpg
-
-tutorial:
-https://www.youtube.com/watch?v=n-FTlQ7Djqc&list=PL4cUxeGkcC9ib4HsrXEYpQnTOTZE1x0uc
-
-pagination:
-https://www.youtube.com/watch?v=N-PB-HMFmdo
 
 
 Solution 1: Place onus on Client Side
@@ -40,3 +39,11 @@ Solution 3: Finding a balance
 - Make use of django libraries to search and filter
 Issues:
 - Increases server utilization
+
+references:
+UI:
+https://www.devgap.uk/blog/wp-content/uploads/2018/09/E-Commerce-Sites-With-UX-Design-Farmdrop-devgap.uk_-1200x706.jpg
+tutorial:
+https://www.youtube.com/watch?v=n-FTlQ7Djqc&list=PL4cUxeGkcC9ib4HsrXEYpQnTOTZE1x0uc
+pagination:
+https://www.youtube.com/watch?v=N-PB-HMFmdo
