@@ -5,8 +5,11 @@
 1. [Project Summary](#project-summary-▶️-click-me-🔗)
 2. [Requirements](#requirements)
 3. [Solution](#solution)<br>
-    a. [Deconstructing the requirement](#deconstruction)
-2. [Setting Up Locally](#setting-up-locally)
+    a. [Deconstructing the requirement](#deconstruction) <br>
+    b. [Designing our data model](#designing-our-data-model) <br>
+    c. [Designing our web app](#designing-our-web-app)
+4. [Setting Up Locally](#setting-up-locally)
+5. [References](#references)
 
 # Project Summary ▶️ [Click Me :link: ](http://54.166.78.71:8000/)
 
@@ -35,7 +38,7 @@ Please let me know if you have any questions about this project.
 
 # Solution
 
-First we will start off by deconstructing the requirement above as much as possible
+First we started off by deconstructing the requirement as much as possible
 #### Deconstructing the requirement:
 1. Domain: Product, Category, Tag
 2. User-Admin: Populate Database with random data using Django Admin
@@ -45,40 +48,34 @@ First we will start off by deconstructing the requirement above as much as possi
 
 #### Designing our Data Model:
 
-1. I chose to create 3 tables. <br>
-a. The Product table which contains the product information.<br>
-b. The Category domain table. <br>
-c. The Tag domain table.
-2. Their attributes and relationships are detailed in figure 3 below
+1. We chose to create 3 tables. <br>
+a. The Product table, which contains the appropriate product information.<br>
+b. The Category domain table, which hold the Category names. <br>
+c. The Tag domain table, which holds the tag names. <br>
+2. The tables attributes, relationships and cardinalities are detailed in figure 3 below
 
 **[figure 3]**
 ![Figure 3](https://ecommerce-app-bucket.s3.amazonaws.com/ERD.png)
 
 
-# Performance & Optimizations
-Solution 1: Place onus on Client Side
-- return all data rows 
-- write javascript to perform client side search and filtering
-Issues: 
-- Database performance issues
+#### Designing our Web App:
 
-Solution 2: Reducing burden on database
-- Introduce pagination to take load off of database
-Issues: 
-- searching and filtering cannot be done on client side
+#### Solution 1: Making the client do the heavy lifting
+- return all data rows to client using following query:
+```
+    Product.objects.all()
+```
+- ✅ allows client-side JavaScript to undertake data search and filtration tasks, thereby distributing the computational demand to the client's device.
+- ❌ However, this approach carries a risk: if the volume of data records becomes excessively large, it could result in Input/Output (IO) bottlenecking for both the server and the database
 
-Solution 3: Finding a balance
-- Make use of django libraries to search and filter
-Issues:
-- Increases server utilization
+#### Solution 2: Reducing burden using Pagination:
+- ✅ Introduce client side pagination to take load off of server and database
+- ❌ requires javascript libraries to paginate which can be more difficult to achieve using django
 
-references:
-UI:
-https://www.devgap.uk/blog/wp-content/uploads/2018/09/E-Commerce-Sites-With-UX-Design-Farmdrop-devgap.uk_-1200x706.jpg
-tutorial:
-https://www.youtube.com/watch?v=n-FTlQ7Djqc&list=PL4cUxeGkcC9ib4HsrXEYpQnTOTZE1x0uc
-pagination:
-https://www.youtube.com/watch?v=N-PB-HMFmdo
+#### Solution 3: Finding a balance
+- ✅ Make django server do the Pagination, Searching and Filtering
+
+Having tried all three solutions, we found solution 3 the most feasible to stick to for this project
 
 # Setting up locally
 
@@ -111,4 +108,9 @@ pip3 install -r requirements.txt
 cd ecommerce_project
 python3 manage.py runserver
 ```
-6. ✅ navigate to  localhost:8000
+6. 💻 navigate to localhost:8000
+
+# References:
+- UI: https://www.devgap.uk/blog/wp-content/uploads/2018/09/E-Commerce-Sites-With-UX-Design-Farmdrop-devgap.uk_-1200x706.jpg
+- tutorial: https://www.youtube.com/watch?v=n-FTlQ7Djqc&list=PL4cUxeGkcC9ib4HsrXEYpQnTOTZE1x0uc
+- pagination: https://www.youtube.com/watch?v=N-PB-HMFmdo
