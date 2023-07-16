@@ -8,8 +8,9 @@
     a. [Deconstructing the requirement](#deconstructing-the-requirement) <br>
     b. [Designing our data model](#designing-our-data-model) <br>
     c. [Designing our web app](#designing-our-web-app)
-4. [Setting Up Locally](#setting-up-locally)
-5. [References](#references)
+4. [Going forward](#going-forward)
+5. [Setting Up Locally](#setting-up-locally)
+6. [References](#references)
 
 # Project Summary ▶️ [Click Me :link: ](http://54.166.78.71:8000/)
 
@@ -76,6 +77,13 @@ First we started off by deconstructing the requirement as much as possible
 - ✅ Make django server do the Pagination, Searching and Filtering
 
 Having tried all three solutions, we found solution 3 the most feasible to stick to for this project
+
+# Going forward
+
+Going forward we believe that two changes need to take place to make this web app more robust
+
+- Data model: Remove the many to many relationship between product and tag and replace it with a join table to create a many to one, one to many relationship between product, tag, and join table.
+- Application: Make use of React or other front end technologies to offshore filtering and searching responsibilities to the client
 
 # Setting up locally
 
