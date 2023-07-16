@@ -40,21 +40,21 @@ Please let me know if you have any questions about this project.
 
 First we started off by deconstructing the requirement as much as possible
 #### Deconstructing the requirement:
-1. Domain: Product, Category, Tag
-2. User-Admin: Populate Database with random data using Django Admin
-3. User: Design simple HTML page to allow user to search product by description
-4. User: Design simple HTML page to allow user to filter by category and tag
-5. Write query functions with Django
+- Domain: Product, Category, Tag
+- User-Admin: Populate Database with random data using Django Admin
+- User: Design simple HTML page to allow user to search product by description
+- User: Design simple HTML page to allow user to filter by category and tag
+- Write query functions with Django
 
 #### Designing our Data Model:
 
-1. We chose to create 3 tables. <br>
-a. The Product table, which contains the appropriate product information.<br>
-b. The Category domain table, which hold the Category names. <br>
-c. The Tag domain table, which holds the tag names. <br>
-2. The tables attributes, relationships and cardinalities are detailed in figure 3 below
+- We chose to create 3 tables. <br>
+    1. The Product table, which contains the appropriate product information.<br>
+    2. The Category domain table, which hold the Category names. <br>
+    3. The Tag domain table, which holds the tag names. <br>
+- The tables attributes, relationships and cardinalities are detailed in figure 3 below
 
-**[figure 3]**
+**[Figure 3: showing tables, attributes, data types, relationships and cardinalities]**
 ![Figure 3](https://ecommerce-app-bucket.s3.amazonaws.com/ERD.png)
 
 
