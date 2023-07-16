@@ -12,7 +12,7 @@
 5. [Setting Up Locally](#setting-up-locally)
 6. [References](#references)
 
-# Project Summary ▶️ [Click Me :link: ](http://54.166.78.71:8000/)
+# Project Summary ▶️ [Click Me :link: ](http://ec2-54-197-71-251.compute-1.amazonaws.com/)
 
 Ecomm is a web platform that allows users to browse through all products offered. 
 It provides a search and filtering functionality to aid with browsing.
