@@ -20,11 +20,11 @@ It provides a search and filtering functionality to aid with browsing.
 For the ecomm administrators, this application provides a portal to manage products.
 **[please see figure 2 below]**
 
-**[figure 1]**
-![Figure 1: showing user's view](https://ecommerce-app-bucket.s3.amazonaws.com/ecommerce-main.png)
+**[Figure 1: showing user's view]**
+![Figure 1](https://ecommerce-app-bucket.s3.amazonaws.com/ecommerce-main.png)
 
-**[figure 2]**
-![Figure 2: showing administrator's view](https://ecommerce-app-bucket.s3.amazonaws.com/ecommerce-admin.png)
+**[Figure 2: showing administrator's view]**
+![Figure 2](https://ecommerce-app-bucket.s3.amazonaws.com/ecommerce-admin.png)
 
 
 # Requirements:
