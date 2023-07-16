@@ -42,7 +42,7 @@ Please let me know if you have any questions about this project.
 First we started off by deconstructing the requirement as much as possible
 #### Deconstructing the requirement:
 - Domain: Product, Category, Tag
-- User-Admin: Populate Database with random data using Django Admin
+- User-Admin: Populate Database with mock data using Django Admin
 - User: Design simple HTML page to allow user to search product by description
 - User: Design simple HTML page to allow user to filter by category and tag
 - Write query functions with Django
@@ -95,7 +95,7 @@ Going forward we believe that two changes need to take place to make this web ap
 
 ### Steps to running locally:
 
-1. make sure you've installed python3, you can do so by running this command
+1. make sure you've installed python3, you can check so by running this command
 ```
 python3 --version
 ```
@@ -117,8 +117,3 @@ cd ecommerce_project
 python3 manage.py runserver
 ```
 6. 💻 navigate to localhost:8000
-
-# References:
-- UI: https://www.devgap.uk/blog/wp-content/uploads/2018/09/E-Commerce-Sites-With-UX-Design-Farmdrop-devgap.uk_-1200x706.jpg
-- tutorial: https://www.youtube.com/watch?v=n-FTlQ7Djqc&list=PL4cUxeGkcC9ib4HsrXEYpQnTOTZE1x0uc
-- pagination: https://www.youtube.com/watch?v=N-PB-HMFmdo
