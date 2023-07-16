@@ -14,17 +14,17 @@
 # Project Summary ▶️ [Click Me :link: ](http://54.166.78.71:8000/)
 
 Ecomm is a web platform that allows users to browse through all products offered. 
-It provides a search and filtering functionality to aid with browsing. <br>
-**[please see figure 1]**
+It provides a search and filtering functionality to aid with browsing.
+**[please see figure 1 below]**
 
-For the ecomm administrators, this application provides a portal to manage products.<br> 
-**[please see figure 2]**
+For the ecomm administrators, this application provides a portal to manage products.
+**[please see figure 2 below]**
 
 **[figure 1]**
-![Figure 1](https://ecommerce-app-bucket.s3.amazonaws.com/ecommerce-main.png)
+![Figure 1: showing user's view](https://ecommerce-app-bucket.s3.amazonaws.com/ecommerce-main.png)
 
 **[figure 2]**
-![Figure 2](https://ecommerce-app-bucket.s3.amazonaws.com/ecommerce-admin.png)
+![Figure 2: showing administrator's view](https://ecommerce-app-bucket.s3.amazonaws.com/ecommerce-admin.png)
 
 
 # Requirements:
