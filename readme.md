@@ -5,7 +5,7 @@
 1. [Project Summary](#project-summary-▶️-click-me-🔗)
 2. [Requirements](#requirements)
 3. [Solution](#solution)<br>
-    a. [Deconstructing the requirement](#deconstruction) <br>
+    a. [Deconstructing the requirement](#deconstructing-the-requirement) <br>
     b. [Designing our data model](#designing-our-data-model) <br>
     c. [Designing our web app](#designing-our-web-app)
 4. [Setting Up Locally](#setting-up-locally)
