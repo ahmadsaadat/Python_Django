@@ -17,7 +17,7 @@ class Product(models.Model):
     description = models.TextField(null=True, blank=False) 
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=False)
     tags = models.ManyToManyField(Tag) 
-    picture_url = models.URLField(max_length=500, null=True, blank=False)
+    picture_url = models.CharField(max_length=1024, null=True, blank=False)
 
     def __str__(self):
         return self.name
